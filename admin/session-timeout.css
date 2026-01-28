@@ -1,0 +1,342 @@
+/* Session Timeout Notification Styles */
+.timeout-notification {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 20px 25px;
+    border-radius: 16px;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 10000;
+    animation: slideInBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 380px;
+    max-width: 450px;
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.timeout-notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0.8) 100%);
+    animation: shimmer 2s infinite linear;
+}
+
+.timeout-notification::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+.timeout-notification .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.timeout-notification .notification-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.timeout-notification .notification-icon i {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.timeout-notification .notification-text {
+    flex: 1;
+}
+
+.timeout-notification .notification-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.timeout-notification .notification-time {
+    font-size: 14px;
+    opacity: 0.95;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.timeout-notification .notification-time strong {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.timeout-notification .notification-hint {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 6px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.timeout-notification .btn-close {
+    filter: invert(1);
+    opacity: 0.7;
+    padding: 6px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+}
+
+.timeout-notification .btn-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Color Themes */
+.timeout-notification.normal {
+    background: linear-gradient(135deg, 
+        rgba(33, 150, 243, 0.95) 0%, 
+        rgba(25, 118, 210, 0.95) 100%);
+}
+
+.timeout-notification.warning {
+    background: linear-gradient(135deg, 
+        rgba(255, 193, 7, 0.95) 0%, 
+        rgba(255, 160, 0, 0.95) 100%);
+}
+
+.timeout-notification.urgent {
+    background: linear-gradient(135deg, 
+        rgba(255, 152, 0, 0.95) 0%, 
+        rgba(245, 124, 0, 0.95) 100%);
+}
+
+.timeout-notification.critical {
+    background: linear-gradient(135deg, 
+        rgba(244, 67, 54, 0.95) 0%, 
+        rgba(211, 47, 47, 0.95) 100%);
+}
+
+.timeout-notification.success {
+    background: linear-gradient(135deg, 
+        rgba(76, 175, 80, 0.95) 0%, 
+        rgba(56, 142, 60, 0.95) 100%);
+}
+
+.timeout-notification.logout {
+    background: linear-gradient(135deg, 
+        rgba(220, 53, 69, 0.95) 0%, 
+        rgba(200, 35, 51, 0.95) 100%);
+}
+
+/* Animations */
+@keyframes slideInBounce {
+    0% {
+        transform: translate(-50%, -60px);
+        opacity: 0;
+        scale: 0.8;
+    }
+    70% {
+        transform: translate(-50%, 10px);
+        opacity: 1;
+        scale: 1.02;
+    }
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes slideOutUp {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+        scale: 1;
+    }
+    100% {
+        transform: translate(-50%, -60px);
+        opacity: 0;
+        scale: 0.8;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.timeout-notification.critical {
+    animation: slideInBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+               pulse 2s infinite;
+}
+
+/* Progress Bar Animation */
+.timeout-notification::before {
+    animation: progressBar 15s linear;
+}
+
+@keyframes progressBar {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+/* Hover Effects */
+.timeout-notification:hover {
+    transform: translate(-50%) scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeout-notification {
+        min-width: 320px;
+        max-width: 90%;
+        margin: 0 15px;
+        padding: 18px 20px;
+        top: 20px;
+    }
+    
+    .timeout-notification .notification-icon {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .timeout-notification .notification-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .timeout-notification .notification-title {
+        font-size: 15px;
+    }
+    
+    .timeout-notification .notification-time {
+        font-size: 13px;
+    }
+    
+    .timeout-notification .notification-time strong {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeout-notification {
+        min-width: 280px;
+        padding: 16px 18px;
+    }
+    
+    .timeout-notification .notification-content {
+        gap: 12px;
+    }
+    
+    .timeout-notification .notification-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .timeout-notification .btn-close {
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .timeout-notification {
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .timeout-notification {
+        animation: slideInDown 0.3s ease;
+    }
+    
+    .timeout-notification::before,
+    .timeout-notification::after {
+        animation: none;
+    }
+    
+    .timeout-notification.critical {
+        animation: slideInDown 0.3s ease;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate(-50%, -20px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
